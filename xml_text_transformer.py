@@ -191,8 +191,3 @@ if __name__ == "__main__":
 
     main(xml_file, output_path, input_string)
 
-#     xml_file = sys.argv[1]
-#     output_path = sys.argv[2]
-#     input_string = sys.argv[3]
-
-#     main(xml_file, output_path, input_string)
