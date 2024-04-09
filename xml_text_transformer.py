@@ -102,6 +102,95 @@
 #         sys.exit(1)
 
 
+# import xml.etree.ElementTree as ET
+# import pandas as pd
+# import logging
+# import sys
+
+# def parse_xml(xml_file):
+#     try:
+#         tree = ET.parse(xml_file)
+#         root = tree.getroot()
+
+#         data = []
+
+#         for container in root.findall('.//{http://autosar.org/schema/r4.0}ECUC-CONTAINER-VALUE'):
+#             short_name = container.find('.//{http://autosar.org/schema/r4.0}SHORT-NAME').text
+#             definition_ref = container.find('.//{http://autosar.org/schema/r4.0}DEFINITION-REF').text
+#             data.append({'Short Name': short_name, 'Definition Ref': definition_ref})
+
+#             for sub_container in container.findall('.//{http://autosar.org/schema/r4.0}ECUC-CONTAINER-VALUE'):
+#                 sub_short_name = sub_container.find('.//{http://autosar.org/schema/r4.0}SHORT-NAME').text
+#                 sub_definition_ref = sub_container.find('.//{http://autosar.org/schema/r4.0}DEFINITION-REF').text
+#                 data.append({'Short Name': sub_short_name, 'Definition Ref': sub_definition_ref})
+
+#         return data
+#     except Exception as e:
+#         logging.error(f"Error parsing XML file: {str(e)}")
+#         return []
+
+# def transform_text(user_input):
+#     try:
+#         if len(user_input.split()) < 3:
+#             logging.warning("Less than 3 words inputted.")
+#             return "Please input a minimum of 3 words."
+
+#         transformed_text = ""
+#         capitalize_next = True
+#         for char in user_input:
+#             if char.isalpha():
+#                 if capitalize_next:
+#                     transformed_text += char.upper()
+#                 else:
+#                     transformed_text += char.lower()
+#                 capitalize_next = not capitalize_next
+#             else:
+#                 transformed_text += char
+
+#         logging.info("Text transformed successfully.")
+#         return transformed_text
+#     except Exception as e:
+#         logging.error(f"An error occurred: {str(e)}")
+#         return "An error occurred during transformation."
+
+# def generate_excel(data, output_path):
+#     try:
+#         if not data:
+#             logging.warning("No data to create Excel file.")
+#             return
+
+#         df = pd.DataFrame(data)
+#         df.to_excel(output_path, index=False)
+#         logging.info(f"Excel file created successfully: {output_path}")
+#     except Exception as e:
+#         logging.error(f"Error creating Excel file: {str(e)}")
+
+# def main(xml_file, output_path, input_string):
+#     logging.basicConfig(filename='xml_parser_log.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+#     data = parse_xml(xml_file)
+#     generate_excel(data, output_path)
+
+#     transformed_text = transform_text(input_string)
+#     print("Transformed Text:", transformed_text)
+
+#     # Exit with appropriate exit code
+#     if not data or 'An error' in transformed_text:
+#         sys.exit(1)
+#     else:
+#         sys.exit(0)
+
+# if __name__ == "__main__":
+#     if len(sys.argv) != 4:
+#         print("Usage: python script.py <xml_file> <output_path> <input_string>")
+#         sys.exit(1)
+
+#     xml_file = sys.argv[1]
+#     output_path = sys.argv[2]
+#     input_string = sys.argv[3]
+
+#     main(xml_file, output_path, input_string)
+
 import xml.etree.ElementTree as ET
 import pandas as pd
 import logging
@@ -190,4 +279,5 @@ if __name__ == "__main__":
     input_string = sys.argv[3]
 
     main(xml_file, output_path, input_string)
+
 
