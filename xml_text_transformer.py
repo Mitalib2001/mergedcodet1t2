@@ -79,9 +79,9 @@ def cli(input_str, input_file, result_file):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_str','-s', help="Input string")
-    parser.add_argument('--input_file','-f', help="Input file")
-    parser.add_argument('--result_file', '-r', help="Result file")
+    parser.add_argument('--input_str','-Is', help="Input string")
+    parser.add_argument('--input_file','-If', help="Input file")
+    parser.add_argument('--result_file', '-Of', help="Result file")
     args = parser.parse_args()
 
     if args.input_str and args.input_file and args.result_file:
