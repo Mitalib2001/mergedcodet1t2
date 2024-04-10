@@ -86,7 +86,7 @@ def cli_mode(xml_file, output_path, input_text):
         print(error_msg)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) == 3:
         print("Usage: python xml_text_transformer.py <xml_file> <output_path> <input_text>")
         sys.exit(1)
     cli_mode(sys.argv[1], sys.argv[2], sys.argv[3])
